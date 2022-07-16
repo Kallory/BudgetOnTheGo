@@ -9,7 +9,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 
-public class BalanceUpdateDialog extends androidx.fragment.app.DialogFragment {
+public class UpdateBalanceDialog extends androidx.fragment.app.DialogFragment {
     public interface OnInputListener {
         void sendInput(String input);
     }
@@ -20,7 +20,7 @@ public class BalanceUpdateDialog extends androidx.fragment.app.DialogFragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.balance_update_dialog, container, false);
+        View view = inflater.inflate(R.layout.update_balance_dialog, container, false);
         actionCancel = view.findViewById(R.id.update_balance_input_cancel);
         actionOk = view.findViewById(R.id.update_balance_input_confirm);
         inputBalanceDialog = view.findViewById(R.id.update_balance_input);

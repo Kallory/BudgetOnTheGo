@@ -7,4 +7,5 @@
     <string name="update_your_balance_string">Update your balance</string>
     <string name="ok">ok</string>
     <string name="cancel">cancel</string>
+    <string name="settings">Settings</string>
 </resources>
