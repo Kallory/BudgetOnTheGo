@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">BudgetOnTheGo</string>
+    <string name="balance">Balance:</string>
+    <string name="balanceValue"> </string>
+    <string name="updateBalance">Update balance</string>
+    <string name="dollarSign">$</string>
+    <string name="update_your_balance_string">Update your balance</string>
+    <string name="ok">ok</string>
+    <string name="cancel">cancel</string>
+</resources>
