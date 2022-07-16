@@ -6,12 +6,14 @@
     android:orientation="vertical">
 
     <TextView
-        android:id="@+id/updateBalanceButton"
-        android:layout_width="120dp"
+        android:id="@+id/updateBalanceText"
+        android:layout_width="wrap_content"
         android:layout_height="60dp"
         android:contentDescription="@string/updateBalance"
+        android:onClick="updateBalanceButton"
         android:text="@string/updateBalance"
+        android:textSize="20sp"
         android:translationX="250dp"
-        android:onClick="updateBalanceButton">
+        android:translationY="250dp">
     </TextView>
 </LinearLayout>

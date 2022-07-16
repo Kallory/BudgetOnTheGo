@@ -12,13 +12,13 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class SettingsMenu extends AppCompatActivity {
+public class SettingsMenu extends AppCompatActivity implements UpdateBalanceDialog.OnInputListener {
     float currentBalance;
     View.OnClickListener listener;
     SharedPreferences prefs;
-    private Button updateBalanceButton;
+    private TextView updateBalanceTextView;
     public TextView balanceView;
-    public String input;
+    public String mInput;
 
 
     @Override
@@ -28,17 +28,8 @@ public class SettingsMenu extends AppCompatActivity {
         Log.d("InsideSecondActivity", "inside second activity!");
         Context context = getApplicationContext();
         prefs = PreferenceManager.getDefaultSharedPreferences(context);
-        balanceView = (TextView) findViewById(R.id.balanceValue);
-        Log.d("prefsContainsBalanceValue", "prefs.contains = " + prefs.contains("balanceValue"));
-        if (prefs.contains("balanceValue")) {
-            currentBalance = Utilities.loadData(currentBalance, prefs);
-        } else {
-            currentBalance = 0;
-        }
 
-        balanceView.setText(String.valueOf(currentBalance));
-
-        updateBalanceButton = findViewById(R.id.updateBalanceButton);
+        updateBalanceTextView = findViewById(R.id.updateBalanceText);
         listener = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -46,6 +37,17 @@ public class SettingsMenu extends AppCompatActivity {
                 dialog.show(getSupportFragmentManager(), "BalanceUpdateDialog");
             }
         };
-        updateBalanceButton.setOnClickListener(listener);
+        updateBalanceTextView.setOnClickListener(listener);
+    }
+
+    @Override
+    public void sendInput(String input) {
+        mInput = input;
+        currentBalance = Float.parseFloat(input);
+        saveInput();
+    }
+
+    private void saveInput() {
+        Utilities.saveData(currentBalance, prefs);
     }
 }

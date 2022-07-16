@@ -22,8 +22,11 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".SettingsMenu"
+        <activity
+            android:name=".SettingsMenu"
             android:label="BudgetOnTheGo"
+            android:parentActivityName=".MainActivity"
+
             />
     </application>
 </manifest>

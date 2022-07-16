@@ -44,10 +44,12 @@ public class UpdateBalanceDialog extends androidx.fragment.app.DialogFragment {
         return view;
     }
 
+    @Override
     public void onAttach(Context context) {
         super.onAttach(context);
         try {
             onInputListener = (OnInputListener) getActivity();
+            Log.d("UpdateBalanceDialog", "OnInputListener good to go");
         } catch (ClassCastException e) {
             Log.e("onAttach", e.getMessage());
         }

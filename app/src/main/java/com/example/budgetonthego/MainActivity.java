@@ -16,7 +16,7 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.DialogFragment;
 
-public class MainActivity extends AppCompatActivity implements UpdateBalanceDialog.OnInputListener {
+public class MainActivity extends AppCompatActivity {
     float currentBalance;
     View.OnClickListener listener;
     SharedPreferences prefs;
@@ -67,18 +67,6 @@ public class MainActivity extends AppCompatActivity implements UpdateBalanceDial
             startActivity(intent);
         }
         return true;
-    }
-
-    @Override
-    public void sendInput(String input) {
-        mInput = input;
-        currentBalance = Float.parseFloat(input);
-        setInputToTextView();
-    }
-
-    private void setInputToTextView() {
-        balanceView.setText(mInput);
-
     }
 
     @Override
