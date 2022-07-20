@@ -19,12 +19,12 @@
         android:layout_gravity="center" />
 
     <Button
-        android:id="@+id/updateBalanceButton"
+        android:id="@+id/gotMoneyButton"
         android:layout_width="120dp"
         android:layout_height="60dp"
-        android:contentDescription="@string/updateBalance"
-        android:text="@string/updateBalance"
+        android:contentDescription="@string/gotMoney"
+        android:text="@string/gotMoney"
         android:translationX="250dp"
-        android:onClick="updateBalanceButton">
+        android:onClick="gotMoneyButton">
     </Button>
 </LinearLayout>

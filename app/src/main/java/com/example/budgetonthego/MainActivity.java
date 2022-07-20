@@ -9,18 +9,16 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.DialogFragment;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements GotMoneyDialog.OnInputListener {
     float currentBalance;
     View.OnClickListener listener;
     SharedPreferences prefs;
-    private Button updateBalanceButton;
+    private Button gotMoneyButton;
     public TextView balanceView;
     public String mInput;
     public Intent intent;
@@ -38,17 +36,19 @@ public class MainActivity extends AppCompatActivity {
             currentBalance = 0;
         }
 
-        balanceView.setText(String.valueOf(currentBalance));
+        //TODO: ensure float has 2 places past decimal point
+        //TODO: ensure input is a positive number
+        balanceView.setText("$" + String.valueOf(currentBalance));
 
-        updateBalanceButton = findViewById(R.id.updateBalanceButton);
+        gotMoneyButton = findViewById(R.id.gotMoneyButton);
         listener = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                UpdateBalanceDialog dialog = new UpdateBalanceDialog();
-                dialog.show(getSupportFragmentManager(), "BalanceUpdateDialog");
+                GotMoneyDialog dialog = new GotMoneyDialog();
+                dialog.show(getSupportFragmentManager(), "GotMoneyDialog");
             }
         };
-        updateBalanceButton.setOnClickListener(listener);
+        gotMoneyButton.setOnClickListener(listener);
     }
 
     @Override
@@ -80,5 +80,20 @@ public class MainActivity extends AppCompatActivity {
         super.onPause();
         Utilities.saveData(currentBalance, prefs);
         Log.d("currentBalanceAfterPausing", "current balance = " + currentBalance);
+    }
+
+    public void sendInput(String input) {
+        mInput = input;
+        currentBalance += Float.parseFloat(input);
+        updateInput("$" + currentBalance);
+        saveInput();
+    }
+
+    private void saveInput() {
+        Utilities.saveData(currentBalance, prefs);
+    }
+
+    private void updateInput(String input) {
+        balanceView.setText(input);
     }
 }

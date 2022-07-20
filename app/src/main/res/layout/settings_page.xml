@@ -13,7 +13,7 @@
         android:onClick="updateBalanceButton"
         android:text="@string/updateBalance"
         android:textSize="20sp"
-        android:translationX="250dp"
+        android:translationX="100dp"
         android:translationY="250dp">
     </TextView>
 </LinearLayout>
